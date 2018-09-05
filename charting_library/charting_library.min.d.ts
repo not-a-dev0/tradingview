@@ -618,6 +618,7 @@ export interface IChartWidgetApi {
 	exportData(options?: ExportDataOptions): Promise<ExportedData>;
 }
 export interface IChartingLibraryWidget {
+	headerReady(): Promise<void>;
 	onChartReady(callback: EmptyCallback): void;
 	onGrayedObjectClicked(callback: (obj: GrayedObject) => void): void;
 	onShortcut(shortCut: string, callback: EmptyCallback): void;
@@ -637,7 +638,7 @@ export interface IChartingLibraryWidget {
 	saveChartToServer(onComplete?: EmptyCallback, onFail?: EmptyCallback, saveAsSnapshot?: false, options?: SaveChartToServerOptions): void;
 	removeChartFromServer(chartId: string, onCompleteCallback: EmptyCallback): void;
 	onContextMenu(callback: (unixTime: number, price: number) => ContextMenuItem[]): void;
-	createButton(options?: CreateButtonOptions): JQuery;
+	createButton(options?: CreateButtonOptions): HTMLElement;
 	showNoticeDialog(params: DialogParams<() => void>): void;
 	showConfirmDialog(params: DialogParams<(confirmed: boolean) => void>): void;
 	showLoadChartDialog(): void;
