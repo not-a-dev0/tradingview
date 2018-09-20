@@ -61,7 +61,8 @@ export declare const enum ParentType {
 export declare const enum PriceScaleMode {
 	Normal = 0,
 	Log = 1,
-	Percentage = 2
+	Percentage = 2,
+	IndexedTo100 = 3
 }
 export declare const enum SeriesStyle {
 	Bars = 0,
