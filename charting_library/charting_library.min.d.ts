@@ -749,6 +749,8 @@ export interface IOrderLineAdapter {
 	onModify<T>(data: T, callback: (data: T) => void): this;
 	onMove(callback: () => void): this;
 	onMove<T>(data: T, callback: (data: T) => void): this;
+	onCancel(callback: () => void): this;
+	onCancel<T>(data: T, callback: (data: T) => void): this;
 	getPrice(): number;
 	setPrice(value: number): this;
 	getText(): string;
