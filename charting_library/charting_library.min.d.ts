@@ -658,10 +658,12 @@ export interface IChartingLibraryWidget {
 	chartsCount(): number;
 	layout(): LayoutType;
 	setLayout(layout: LayoutType): void;
+	layoutName(): string;
 	changeTheme(themeName: ThemeName): void;
 	takeScreenshot(): void;
 	lockAllDrawingTools(): IWatchedValue<boolean>;
 	hideAllDrawingTools(): IWatchedValue<boolean>;
+	undoRedoState(): UndoRedoState;
 }
 export interface IDatafeedChartApi {
 	calculateHistoryDepth?(resolution: ResolutionString, resolutionBack: ResolutionBackValues, intervalBack: number): HistoryDepth | undefined;
@@ -1226,6 +1228,7 @@ export interface SubscribeEventsMap {
 	study: (params: StudyOrDrawingAddedToChartEventParams) => void;
 	undo: EmptyCallback;
 	redo: EmptyCallback;
+	undoRedoStackChanged: (state: UndoRedoState) => void;
 	reset_scales: EmptyCallback;
 	compare_add: EmptyCallback;
 	add_compare: EmptyCallback;
@@ -1332,6 +1335,12 @@ export interface TradingTerminalWidgetOptions extends ChartingLibraryWidgetOptio
 	rss_news_feed?: RssNewsFeedParams;
 	news_provider?: NewsProvider;
 	brokerFactory?(host: IBrokerConnectionAdapterHost): IBrokerWithoutRealtime | IBrokerTerminal;
+}
+export interface UndoRedoState {
+	enableUndo: boolean;
+	undoText: string | undefined;
+	enableRedo: boolean;
+	redoText: string | undefined;
 }
 export interface VisiblePriceRange {
 	from: number;
