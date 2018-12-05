@@ -25,8 +25,7 @@
 				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 			}
 
-			TradingView.onready(function()
-			{
+			function initOnReady() {
 				var udf_datafeed = new Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com");
 
 				var widget = window.tvWidget = new TradingView.widget({
@@ -360,7 +359,7 @@
 						} // end of getMinAndMaxPrice callback
 					); // end of getMinAndMaxPrice
 				}); // end of widget.onChartReady
-			}); // end of TradingView.onready
+			}; // end of TradingView.onready
 
 			function getMinAndMaxPrice(udf_datafeed, time1, time2, callback) {
 				var minPrice = 99999, maxPrice = 0;
@@ -385,6 +384,8 @@
 				}, function(err) {
 				});
 			}
+
+			window.addEventListener('DOMContentLoaded', initOnReady, false);
 		</script>
 
 	</head>

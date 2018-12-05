@@ -81,7 +81,6 @@ export declare const enum Side {
 	Sell = -1
 }
 export declare const widget: ChartingLibraryWidgetConstructor;
-export declare function onready(callback: () => void): void;
 export declare function version(): string;
 export declare type ActionMetaInfo = ActionDescriptionWithCallback | MenuSeparator;
 export declare type AvailableSaveloadVersions = '1.0' | '1.1';
